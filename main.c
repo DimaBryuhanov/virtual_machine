@@ -4,20 +4,20 @@
 
 typedef enum
 {
-    INST_PUSH,
-    INST_ADD,
-    INST_PRINT
+    INST_PUSH,  //0000 or 0x00
+    INST_ADD,   //0100 or 0x01
+    INST_PRINT  //0200 or 0x02
 } Inst_Type;
 
 typedef struct
 {
-    Inst_Type type;
-    int operand;
+    Inst_Type type; //4 bytes
+    int operand;    //4 bytes
 } Inst;
 
 Inst program[] = {
-    {.type = INST_PUSH, .operand = 35},
-    {.type = INST_PUSH, .operand = 34},
+    {.type = INST_PUSH, .operand = 35}, //35 = 2300 or 0x23
+    {.type = INST_PUSH, .operand = 34}, //34 = 2200 or 0x22
     {.type = INST_ADD},
     {.type = INST_PRINT},
 };
