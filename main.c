@@ -41,11 +41,22 @@ int stack_pop(void)
     return stack[--stack_size];
 }
 
+void save_program_to_file(const char *file_path)
+{
+
+    FILE *f = fopen(file_path, "wb");
+    fwrite(program, sizeof(program[0]), PROGRAM_SIZE, f);
+    fclose(f);
+}
+
 int main()
 {
 
     for (size_t ip = 0; ip < PROGRAM_SIZE; ++ip)
     {
+
+        save_program_to_file("program.vm");
+
         switch (program[ip].type)
         {
         case INST_PUSH:
@@ -74,3 +85,4 @@ int main()
     }
 
     return 0;
+}
